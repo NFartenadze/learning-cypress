@@ -86,27 +86,24 @@ describe("Testing nopCommerce", () => {
     });
   });
 
-  // const payload = [
-  //   "Computers ",
-  //   "Electronics ",
-  //   "Apparel ",
-  //   "Digital downloads ",
-  //   "Books ",
-  //   "Jewelry ",
-  //   "Gift Cards ",
-  // ];
-  // it("verify that navigation links exist", () => {
-  //   cy.get(".top-menu > li > a:visible").each((link, index) => {
-  //     cy.wrap(link).should("have.text", payload[index]);
-  //   });
-  // });
-
-  // it("verify that you can navigate using every link", () => {
-  //   cy.wrap(payload).each((category: string) => {
-  //     cy.get(".top-menu > li > a:visible")
-  //       .contains(category)
-  //       .should("be.visible")
-  //       .click();
-  //   });
-  // });
+  const payload = [
+    "Computers ",
+    "Electronics ",
+    "Apparel ",
+    "Digital downloads ",
+    "Books ",
+    "Jewelry ",
+    "Gift Cards ",
+  ];
+  it("verify that navigation links exist", () => {
+    cy.get(".top-menu > li > a:visible").each((link, index) => {
+      cy.wrap(link).should("have.text", payload[index]);
+    });
+    cy.wrap(payload).each((category: string) => {
+      cy.get(".top-menu > li > a:visible")
+        .contains(category)
+        .should("be.visible")
+        .click();
+    });
+  });
 });
