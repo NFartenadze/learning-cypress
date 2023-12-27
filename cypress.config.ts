@@ -5,7 +5,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    // baseUrl: "https://www.gsmarena.com/",
+    baseUrl: "https://demo.nopcommerce.com",
     viewportHeight: 800,
     viewportWidth: 1440,
   },
