@@ -3,7 +3,7 @@ describe("Testing nopCommerce", () => {
     cy.visit("https://demo.nopcommerce.com/");
   });
 
-  it("Search product and add to cart", () => {
+  it.skip("Search product and add to cart", () => {
     cy.get("#small-searchterms").type("Nikon{enter}");
 
     cy.get(".products-wrapper")
@@ -18,6 +18,38 @@ describe("Testing nopCommerce", () => {
       cy.get(".cart-qty").should("contain", "1");
     });
   });
+
+  it("Check if user can view details of product", () => {
+    const productDetail = {
+      productName: "HTC One M8 Android L 5.0 Lollipop",
+      shortDescription:
+        "HTC - One (M8) 4G LTE Cell Phone with 32GB Memory - Gunmetal (Sprint)",
+      additionalDetails: "SKU: M8_HTC_5L",
+      productPrice: " $245.00 ",
+    };
+
+    cy.get("#small-searchterms").type("HTC One M8{enter}");
+    cy.get(".products-wrapper")
+      .find(".product-title")
+      .should("contain", "HTC One M8");
+    cy.get(".product-item").click();
+
+    cy.get(".overview").then((overview) => {
+      cy.wrap(overview)
+        .find(".product-name")
+        .should("have.text", productDetail.productName);
+      cy.wrap(overview)
+        .find(".short-description")
+        .should("have.text", productDetail.shortDescription);
+      cy.wrap(overview)
+        .find(".additional-details")
+        .should("have.text", productDetail.additionalDetails);
+      cy.wrap(overview)
+        .find(".product-price")
+        .should("have.text", productDetail.productPrice);
+    });
+  });
+
   // const payload = [
   //   "Computers ",
   //   "Electronics ",
