@@ -50,6 +50,42 @@ describe("Testing nopCommerce", () => {
     });
   });
 
+  //second way, just want to know if this is good practice
+  it("Check if user can view details of product V2", () => {
+    const productDetail = {
+      productName: {
+        locator: ".product-name",
+        expectedText: "HTC One M8 Android L 5.0 Lollipop",
+      },
+      shortDescription: {
+        locator: ".short-description",
+        expectedText:
+          "HTC - One (M8) 4G LTE Cell Phone with 32GB Memory - Gunmetal (Sprint)",
+      },
+      additionalDetails: {
+        locator: ".additional-details",
+        expectedText: "SKU: M8_HTC_5L",
+      },
+      productPrice: {
+        locator: ".product-price",
+        expectedText: " $245.00 ",
+      },
+    };
+
+    cy.get("#small-searchterms").type("HTC One M8{enter}");
+    cy.get(".products-wrapper")
+      .find(".product-title")
+      .should("contain", "HTC One M8");
+    cy.get(".product-item").click();
+
+    cy.get(".overview").then((overview) => {
+      Object.keys(productDetail).forEach((key) => {
+        const { locator, expectedText } = productDetail[key];
+        cy.wrap(overview).find(locator).should("have.text", expectedText);
+      });
+    });
+  });
+
   // const payload = [
   //   "Computers ",
   //   "Electronics ",
