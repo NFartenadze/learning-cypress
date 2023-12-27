@@ -13,6 +13,9 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "cypress": "^13.6.1"
+    "cypress": "^13.6.1",
+    "@badeball/cypress-cucumber-preprocessor": "latest",
+    "@cypress/webpack-preprocessor": "latest",
+    "ts-loader": "latest"
   }
 }
