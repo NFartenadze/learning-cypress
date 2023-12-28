@@ -1,3 +1,5 @@
+import { When } from "@badeball/cypress-cucumber-preprocessor";
+
 const values = {
   register: [
     "Becca",
@@ -53,48 +55,20 @@ function addProductToCart() {
   });
 }
 
-describe("Tests with authorization", () => {
-  it("Register user", () => {
-    //register new user
-    registerNewUser();
+When("", () => {
+  //register new user
+  registerNewUser();
 
-    //login with newly registered account
-    loginUser();
+  //login with newly registered account
+  loginUser();
 
-    //adding product to cart
-    addProductToCart();
+  //adding product to cart
+  addProductToCart();
 
-    //checkout
-    cy.get("#topcartlink").click();
-    cy.get("#shopping-cart-form").should("be.visible");
+  //checkout
+  cy.get("#topcartlink").click();
+  cy.get("#shopping-cart-form").should("be.visible");
 
-    cy.get("#termsofservice").check();
-    cy.get("#checkout").click();
-  });
-
-  // skipping this test for now it wont work unless i register and login user
-  // at the moment login has some problems
-  it.skip("Checkout product", () => {
-    //adding product to cart
-    cy.get("#small-searchterms").type("Nikon{enter}");
-
-    cy.get(".products-wrapper")
-      .find(".product-title")
-      .should("contain", "Nikon");
-    cy.get(".product-item").click();
-
-    cy.get("#product-details-form").then((form) => {
-      expect(form).to.exist;
-      cy.wrap(form).find(".add-to-cart-panel button").first().click();
-      cy.wait(3000);
-      cy.get(".cart-qty").should("contain", "1");
-    });
-
-    //checkout
-    cy.get("#topcartlink").click();
-    cy.get("#shopping-cart-form").should("be.visible");
-
-    cy.get("#termsofservice").check();
-    cy.get("#checkout").click();
-  });
+  cy.get("#termsofservice").check();
+  cy.get("#checkout").click();
 });

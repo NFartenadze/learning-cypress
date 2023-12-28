@@ -48,8 +48,10 @@ async function setupNodeEvents(
 
 export default defineConfig({
   e2e: {
-    baseUrl: "https://duckduckgo.com",
+    baseUrl: "https://demo.nopcommerce.com/",
     specPattern: "**/*.feature",
     setupNodeEvents,
+    viewportHeight: 800,
+    viewportWidth: 1440,
   },
 });
