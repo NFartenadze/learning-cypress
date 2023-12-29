@@ -1,0 +1,33 @@
+{
+  "productInformation": {
+    "productName": "HTC One M8 Android L 5.0 Lollipop",
+    "shortDescription": "HTC - One (M8) 4G LTE Cell Phone with 32GB Memory - Gunmetal (Sprint)",
+    "additionalDetails": "SKU: M8_HTC_5L",
+    "productPrice": " $245.00 "
+  },
+
+  "navigationCategories": [
+    "Computers ",
+    "Electronics ",
+    "Apparel ",
+    "Digital downloads ",
+    "Books ",
+    "Jewelry ",
+    "Gift Cards "
+  ],
+
+  "checkout": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "company": "Example Corp",
+    "country": "United States",
+    "stateProvince": "California",
+    "city": "Los Angeles",
+    "address1": "123 Main Street",
+    "address2": "Apt 456",
+    "postalCode": "90001",
+    "phoneNumber": "555-1234",
+    "faxNumber": "555-5678"
+  }
+}
