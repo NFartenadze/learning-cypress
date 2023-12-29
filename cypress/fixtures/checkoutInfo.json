@@ -1,0 +1,14 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "company": "Example Corp",
+  "country": "United States",
+  "stateProvince": "California",
+  "city": "Los Angeles",
+  "address1": "123 Main Street",
+  "address2": "Apt 456",
+  "postalCode": "90001",
+  "phoneNumber": "555-1234",
+  "faxNumber": "555-5678"
+}

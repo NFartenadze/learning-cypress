@@ -1,37 +1,39 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+// import * as registerValues from "../fixtures/registrationFields.json";
+
+declare namespace Cypress {
+  interface Chainable<Subject = any> {
+    login(): Chainable<Subject>;
+    register(): Chainable<Subject>;
+  }
+}
+
+// Cypress.Commands.add("register", () => {
+//   cy.visit("/register");
+//   //select gender
+//   cy.get(`.male input`).check();
+
+//   cy.get(
+//     ".form-fields .inputs input:not([type='radio'],[type='checkbox'])"
+//   ).each((input, index) => {
+//     if (index == 2) {
+//       cy.wrap(input).type(
+//         `${Math.random().toString(6)}${registerValues[index]}`
+//       );
+//     } else {
+//       cy.wrap(input).type(registerValues[index]);
 //     }
-//   }
-// }
+//   });
+//   //select date
+//   cy.get("select[name='DateOfBirthDay']").select("8");
+//   cy.get("select[name='DateOfBirthMonth']").select("September");
+//   cy.get("select[name='DateOfBirthYear']").select("2002");
+
+//   cy.get("#register-button").click();
+//   cy.get(".register-continue-button").click();
+// });
+// Cypress.Commands.add("login", () => {
+//   cy.get(".ico-login").click();
+//   cy.get("#Email").type(registerValues[2]);
+//   cy.get("#Password").type(`${registerValues[4]}{enter}`);
+// });
