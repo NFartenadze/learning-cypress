@@ -5,11 +5,7 @@
     "allowJs": true,
 
     "types": ["cypress", "node"],
-    "baseUrl": "./",
-    "resolveJsonModule": true,
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "resolveJsonModule": true
   },
   "include": ["cypress/**/*.ts"]
 }
